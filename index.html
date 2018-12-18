@@ -435,7 +435,7 @@ License URL: https://creativecommons.org/licenses/by/4.0/
                 <input type="text" name="subject" placeholder="Subject" class="form-control">
               </div>
               <div class="col-md-12"><textarea name="" id=""></textarea></div>
-              <div class="col-md-12 sub-but"><button class="g-recaptcha btn btn-general btn-white submit_contact" type="submit" data-sitekey="6LfJ-oIUAAAAAA9KXuDR96V_JgpX4yPXOhJq_5Af" data-callback="onSubmit">Send</button></div>
+              <div class="col-md-12 sub-but"><button class="btn btn-general btn-white submit_contact" type="submit">Send</button></div>
             </div>
           </form>
         </div>
@@ -1011,7 +1011,7 @@ License URL: https://creativecommons.org/licenses/by/4.0/
   <script>
     grecaptcha.ready(function() {
       grecaptcha.execute('6LfJ-oIUAAAAAA9KXuDR96V_JgpX4yPXOhJq_5Af', {
-          action: 'submit'
+          action: 'action_name'
         })
         .then(function(token) {
           // Verify the token on the server.
