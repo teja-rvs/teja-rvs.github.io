@@ -25,6 +25,12 @@ License URL: https://creativecommons.org/licenses/by/4.0/
   <link href="css/devicons/css/devicons.min.css" rel="stylesheet">
   <link href="css/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      emailjs.init("user_0xzJoI5vt0Qr6JJAJuxph");
+    })();
+  </script>
 </head>
 
 <body id="page-top">
@@ -972,12 +978,7 @@ License URL: https://creativecommons.org/licenses/by/4.0/
 
     });
   </script>
-  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
   <script type="text/javascript">
-    $(function() {
-      emailjs.init("user_0xzJoI5vt0Qr6JJAJuxph");
-    })();
-
 
     var myform = $("form#contact-form");
     myform.submit(function(event){
