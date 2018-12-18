@@ -25,11 +25,27 @@ License URL: https://creativecommons.org/licenses/by/4.0/
   <link href="css/devicons/css/devicons.min.css" rel="stylesheet">
   <link href="css/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <!-- Global javascript -->
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/counter/jquery.waypoints.min.js"></script>
+  <script src="js/counter/jquery.counterup.min.js"></script>
+  <script src="js/custom.js"></script>
   <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js?render=6LfJ-oIUAAAAAA9KXuDR96V_JgpX4yPXOhJq_5Af'></script>
   <script type="text/javascript">
     $(function() {
       emailjs.init("user_0xzJoI5vt0Qr6JJAJuxph");
-    })();
+    });
+  </script>
+  <script type="text/javascript">
+    window.onload = function() {
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        emailjs.sendForm('contact_service', 'template_ouVy9O9a', this);
+      });
+    }
   </script>
 </head>
 
@@ -407,7 +423,7 @@ License URL: https://creativecommons.org/licenses/by/4.0/
             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
               using Content here.</p>
           </div>
-          <form class="contact-form" method="post">
+          <form id="contact-form" method="post">
             <div class="row con-form">
               <div class="col-md-12">
                 <input type="text" name="full-name" placeholder="Full Name" class="form-control">
@@ -419,7 +435,7 @@ License URL: https://creativecommons.org/licenses/by/4.0/
                 <input type="text" name="subject" placeholder="Subject" class="form-control">
               </div>
               <div class="col-md-12"><textarea name="" id=""></textarea></div>
-              <div class="col-md-12 sub-but"><button class="btn btn-general btn-white submit_contact" role="button">Send</button></div>
+              <div class="col-md-12 sub-but"><button class="btn btn-general btn-white submit_contact" type="submit">Send</button></div>
             </div>
           </form>
         </div>
@@ -943,13 +959,6 @@ License URL: https://creativecommons.org/licenses/by/4.0/
   </div>
 
 
-  <!-- Global javascript -->
-  <script src="js/jquery/jquery.min.js"></script>
-  <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="js/jquery-easing/jquery.easing.min.js"></script>
-  <script src="js/counter/jquery.waypoints.min.js"></script>
-  <script src="js/counter/jquery.counterup.min.js"></script>
-  <script src="js/custom.js"></script>
   <script>
     $(document).ready(function() {
 
@@ -979,9 +988,8 @@ License URL: https://creativecommons.org/licenses/by/4.0/
     });
   </script>
   <script type="text/javascript">
-
     var myform = $("form#contact-form");
-    myform.submit(function(event){
+    myform.submit(function(event) {
       event.preventDefault();
 
       // Change to your service ID, or keep using the default service
@@ -989,17 +997,26 @@ License URL: https://creativecommons.org/licenses/by/4.0/
       var template_id = "template_ouVy9O9a";
 
       myform.find("button.submit_contact").text("Sending...");
-      emailjs.sendForm(service_id,template_id,myform[0])
-      .then(function(){
-        alert("Sent!");
-        myform.find("button.submit_contact").text("Send");
-      }, function(err) {
-        alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
-        myform.find("button.submit_contact").text("Send");
-      });
+      emailjs.sendForm(service_id, template_id, myform[0])
+        .then(function() {
+          alert("Sent!");
+          myform.find("button.submit_contact").text("Send");
+        }, function(err) {
+          alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+          myform.find("button.submit_contact").text("Send");
+        });
       return false;
     });
-
+  </script>
+  <script>
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6LfJ-oIUAAAAAA9KXuDR96V_JgpX4yPXOhJq_5Af', {
+          action: 'action_name'
+        })
+        .then(function(token) {
+          // Verify the token on the server.
+        });
+    });
   </script>
 </body>
 
